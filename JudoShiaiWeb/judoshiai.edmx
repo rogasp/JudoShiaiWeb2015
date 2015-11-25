@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="judoshiaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="belts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="clubbs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="competitionJudokas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="competitionId" Type="int" />
+          <Property Name="judokaId" Type="int" />
+          <Property Name="addedDate" Type="date" />
+          <Property Name="addedBy" Type="int" />
+          <Property Name="beltId" Type="int" />
+          <Property Name="weight" Type="int" />
+          <Property Name="clubbId" Type="int" />
+        </EntityType>
+        <EntityType Name="competitions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="place" Type="varchar" MaxLength="50" />
+          <Property Name="tatamis" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="candouble" Type="bit" />
+          <Property Name="maxcompetitors" Type="int" />
+        </EntityType>
+        <EntityType Name="judokas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clubbid" Type="int" Nullable="false" />
+          <Property Name="beltid" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="last" Type="varchar" MaxLength="50" />
+          <Property Name="idrottsid" Type="varchar" MaxLength="50" />
+          <Property Name="pnr" Type="varchar" MaxLength="50" />
+          <Property Name="birthyear" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'judoshiai.dbo.vwAddJudokas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwAddJudokas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="clubbId" Type="int" />
+          <Property Name="clubbName" Type="varchar" MaxLength="50" />
+          <Property Name="last" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="birthyear" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'judoshiai.dbo.vwListCompetitions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwListCompetitions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="place" Type="varchar" MaxLength="50" />
+          <Property Name="tatamis" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="maxcompetitors" Type="int" />
+          <Property Name="candouble" Type="bit" />
+          <Property Name="numcompetitors" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwShowJudokas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="competitionId" Type="int" />
+          <Property Name="judokaId" Type="int" />
+          <Property Name="clubbName" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="last" Type="varchar" MaxLength="50" />
+          <Property Name="birthyear" Type="int" />
+          <Property Name="beltName" Type="varchar" MaxLength="50" />
+          <Property Name="weight" Type="int" />
+          <Property Name="candouble" Type="bit" />
+        </EntityType>
+        <Function Name="funcCandouble" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="Cid" Type="int" Mode="In" />
+          <Parameter Name="Jid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="funcNumCompetitors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="Cid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="judoshiaiModelStoreContainer">
+          <EntitySet Name="belts" EntityType="Self.belts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clubbs" EntityType="Self.clubbs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="competitionJudokas" EntityType="Self.competitionJudokas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="competitions" EntityType="Self.competitions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="judokas" EntityType="Self.judokas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwAddJudokas" EntityType="Self.vwAddJudokas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwAddJudokas].[id] AS [id], 
+    [vwAddJudokas].[clubbId] AS [clubbId], 
+    [vwAddJudokas].[clubbName] AS [clubbName], 
+    [vwAddJudokas].[last] AS [last], 
+    [vwAddJudokas].[name] AS [name], 
+    [vwAddJudokas].[birthyear] AS [birthyear]
+    FROM [dbo].[vwAddJudokas] AS [vwAddJudokas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwListCompetitions" EntityType="Self.vwListCompetitions" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwListCompetitions].[id] AS [id], 
+    [vwListCompetitions].[name] AS [name], 
+    [vwListCompetitions].[place] AS [place], 
+    [vwListCompetitions].[tatamis] AS [tatamis], 
+    [vwListCompetitions].[date] AS [date], 
+    [vwListCompetitions].[maxcompetitors] AS [maxcompetitors], 
+    [vwListCompetitions].[candouble] AS [candouble], 
+    [vwListCompetitions].[numcompetitors] AS [numcompetitors]
+    FROM [dbo].[vwListCompetitions] AS [vwListCompetitions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwShowJudokas" EntityType="Self.vwShowJudokas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwShowJudokas].[id] AS [id], 
+    [vwShowJudokas].[competitionId] AS [competitionId], 
+    [vwShowJudokas].[judokaId] AS [judokaId], 
+    [vwShowJudokas].[clubbName] AS [clubbName], 
+    [vwShowJudokas].[name] AS [name], 
+    [vwShowJudokas].[last] AS [last], 
+    [vwShowJudokas].[birthyear] AS [birthyear], 
+    [vwShowJudokas].[beltName] AS [beltName], 
+    [vwShowJudokas].[weight] AS [weight], 
+    [vwShowJudokas].[candouble] AS [candouble]
+    FROM [dbo].[vwShowJudokas] AS [vwShowJudokas]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="judoshiaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="clubb">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="competition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tatamis" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="candouble" Type="Boolean" />
+          <Property Name="maxcompetitors" Type="Int32" />
+        </EntityType>
+        <EntityType Name="judoka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clubbid" Type="Int32" Nullable="false" />
+          <Property Name="beltid" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idrottsid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pnr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="birthyear" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="judoshiaiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clubbs" EntityType="Self.clubb" />
+          <EntitySet Name="competitions" EntityType="Self.competition" />
+          <EntitySet Name="judokas" EntityType="Self.judoka" />
+          <EntitySet Name="competitionJudokas" EntityType="judoshiaiModel.competitionJudoka" />
+          <EntitySet Name="vwShowJudokas" EntityType="judoshiaiModel.vwShowJudoka" />
+          <EntitySet Name="vwAddJudokas" EntityType="judoshiaiModel.vwAddJudoka" />
+          <EntitySet Name="belts" EntityType="judoshiaiModel.belt" />
+          <EntitySet Name="vwListCompetitions" EntityType="judoshiaiModel.vwListCompetition" />
+        </EntityContainer>
+        <EntityType Name="competitionJudoka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="competitionId" Type="Int32" />
+          <Property Name="judokaId" Type="Int32" />
+          <Property Name="addedDate" Type="DateTime" Precision="0" />
+          <Property Name="addedBy" Type="Int32" />
+          <Property Name="beltId" Type="Int32" />
+          <Property Name="weight" Type="Int32" />
+          <Property Name="clubbId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwShowJudoka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="competitionId" Type="Int32" />
+          <Property Name="judokaId" Type="Int32" />
+          <Property Name="clubbName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="birthyear" Type="Int32" />
+          <Property Name="beltName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="weight" Type="Int32" />
+          <Property Name="candouble" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwAddJudoka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="clubbId" Type="Int32" />
+          <Property Name="clubbName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="birthyear" Type="Int32" />
+        </EntityType>
+        <EntityType Name="belt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwListCompetition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tatamis" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="maxcompetitors" Type="Int32" />
+          <Property Name="candouble" Type="Boolean" />
+          <Property Name="numcompetitors" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="judoshiaiModelStoreContainer" CdmEntityContainer="judoshiaiEntities">
+          <EntitySetMapping Name="clubbs">
+            <EntityTypeMapping TypeName="judoshiaiModel.clubb">
+              <MappingFragment StoreEntitySet="clubbs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="competitions">
+            <EntityTypeMapping TypeName="judoshiaiModel.competition">
+              <MappingFragment StoreEntitySet="competitions">
+                <ScalarProperty Name="maxcompetitors" ColumnName="maxcompetitors" />
+                <ScalarProperty Name="candouble" ColumnName="candouble" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="tatamis" ColumnName="tatamis" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="judokas">
+            <EntityTypeMapping TypeName="judoshiaiModel.judoka">
+              <MappingFragment StoreEntitySet="judokas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="clubbid" ColumnName="clubbid" />
+                <ScalarProperty Name="beltid" ColumnName="beltid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="idrottsid" ColumnName="idrottsid" />
+                <ScalarProperty Name="pnr" ColumnName="pnr" />
+                <ScalarProperty Name="birthyear" ColumnName="birthyear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="competitionJudokas">
+            <EntityTypeMapping TypeName="judoshiaiModel.competitionJudoka">
+              <MappingFragment StoreEntitySet="competitionJudokas">
+                <ScalarProperty Name="clubbId" ColumnName="clubbId" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="beltId" ColumnName="beltId" />
+                <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+                <ScalarProperty Name="addedDate" ColumnName="addedDate" />
+                <ScalarProperty Name="judokaId" ColumnName="judokaId" />
+                <ScalarProperty Name="competitionId" ColumnName="competitionId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwShowJudokas">
+            <EntityTypeMapping TypeName="judoshiaiModel.vwShowJudoka">
+              <MappingFragment StoreEntitySet="vwShowJudokas">
+                <ScalarProperty Name="candouble" ColumnName="candouble" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="beltName" ColumnName="beltName" />
+                <ScalarProperty Name="birthyear" ColumnName="birthyear" />
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="clubbName" ColumnName="clubbName" />
+                <ScalarProperty Name="judokaId" ColumnName="judokaId" />
+                <ScalarProperty Name="competitionId" ColumnName="competitionId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwAddJudokas">
+            <EntityTypeMapping TypeName="judoshiaiModel.vwAddJudoka">
+              <MappingFragment StoreEntitySet="vwAddJudokas">
+                <ScalarProperty Name="birthyear" ColumnName="birthyear" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="clubbName" ColumnName="clubbName" />
+                <ScalarProperty Name="clubbId" ColumnName="clubbId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="belts">
+            <EntityTypeMapping TypeName="judoshiaiModel.belt">
+              <MappingFragment StoreEntitySet="belts">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwListCompetitions">
+            <EntityTypeMapping TypeName="judoshiaiModel.vwListCompetition">
+              <MappingFragment StoreEntitySet="vwListCompetitions">
+                <ScalarProperty Name="numcompetitors" ColumnName="numcompetitors" />
+                <ScalarProperty Name="candouble" ColumnName="candouble" />
+                <ScalarProperty Name="maxcompetitors" ColumnName="maxcompetitors" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="tatamis" ColumnName="tatamis" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
