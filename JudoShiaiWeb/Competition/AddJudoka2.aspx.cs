@@ -50,6 +50,19 @@ namespace JudoShiaiWeb.Competition
                           select j).Single();
 
             AddJudoka(judoka, jid, cid);
+            
+            int beltId= Convert.ToInt16(ddlBelts.SelectedValue);
+
+            if (beltId != judoka.beltid)
+            {
+                judoka.beltid = beltId;
+                dbContext.SaveChanges();
+                //Response.Redirect("~/ChangebeltJudoka/" + cid.ToString() + "/" + jid.ToString() + "/" + beltId.ToString());
+            }
+            else
+            {
+                //Response.Redirect("~/ShowJudokas/" + cid.ToString());
+            }
             Response.Redirect("~/ShowJudokas/" + cid.ToString());
         }
 
