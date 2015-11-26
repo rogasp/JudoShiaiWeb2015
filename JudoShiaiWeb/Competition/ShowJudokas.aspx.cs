@@ -10,6 +10,8 @@ namespace JudoShiaiWeb.Competition
     public partial class ShowJudokas : System.Web.UI.Page
     {
         judoshiaiEntities dbContext;
+        int maxNumCompetitors;
+        int numCompetitors;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +26,7 @@ namespace JudoShiaiWeb.Competition
                                   where c.id == id
                                   select c).Single();
 
-                int maxNumCompetitors = (int)competition.maxcompetitors;
+                maxNumCompetitors = (int)competition.maxcompetitors;
 
                 string maxText = "";
 
@@ -40,6 +42,16 @@ namespace JudoShiaiWeb.Competition
                 GridView1.DataSource = showjudokas.ToList();
                 GridView1.DataBind();
                 lblAntal.Text = " (" + showjudokas.Count().ToString() + " st" + maxText +")";
+                numCompetitors = showjudokas.Count();
+            }
+
+            if ((maxNumCompetitors - numCompetitors) > 0)
+            {
+                LinkButton1.CssClass = "btn btn-success active";
+            }
+            else
+            {
+                LinkButton1.CssClass = "btn btn-danger disabled";
             }
         }
 
@@ -87,6 +99,8 @@ namespace JudoShiaiWeb.Competition
 
                     hl3.NavigateUrl = "~/WeighJudoka/" + cid + "/" + jid + "/" + lid;
                 }
+
+                
 
             }
         }

@@ -21,5 +21,7 @@ namespace JudoShiaiWeb
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<bool> candouble { get; set; }
         public Nullable<int> maxcompetitors { get; set; }
+        public Nullable<int> clubbid { get; set; }
+        public Nullable<bool> blocked { get; set; }
     }
 }

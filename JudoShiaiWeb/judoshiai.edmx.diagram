@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="judoshiaiModel.judoka" Width="1.5" PointX="8.125" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="judoshiaiModel.competitionJudoka" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="judoshiaiModel.vwShowJudoka" Width="1.5" PointX="5.375" PointY="2.5" />
-        <EntityTypeShape EntityType="judoshiaiModel.vwAddJudoka" Width="1.5" PointX="3.125" PointY="3.125" />
+        <EntityTypeShape EntityType="judoshiaiModel.vwAddJudoka" Width="1.5" PointX="2.625" PointY="3.75" />
         <EntityTypeShape EntityType="judoshiaiModel.belt" Width="1.5" PointX="0.5" PointY="3.625" />
         <EntityTypeShape EntityType="judoshiaiModel.vwListCompetition" Width="1.5" PointX="8.375" PointY="4" />
       </Diagram>

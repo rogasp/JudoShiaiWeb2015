@@ -22,5 +22,7 @@ namespace JudoShiaiWeb
         public Nullable<int> maxcompetitors { get; set; }
         public Nullable<bool> candouble { get; set; }
         public Nullable<int> numcompetitors { get; set; }
+        public string clubbName { get; set; }
+        public Nullable<int> competitionStatus { get; set; }
     }
 }

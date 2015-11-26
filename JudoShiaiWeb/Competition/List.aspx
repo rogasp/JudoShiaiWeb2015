@@ -5,36 +5,49 @@
     <p>
         <asp:LinkButton ID="LinkButton1" runat="server">Ny tävling</asp:LinkButton>
     </p>
-    <p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="686px" OnRowDataBound="GridView1_RowDataBound">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="800px" OnRowDataBound="GridView1_RowDataBound">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="ID">
-                <ItemStyle Width="50px" />
+                <HeaderStyle HorizontalAlign="Center" />
+                <ItemStyle Width="50px" HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="clubbName" HeaderText="Klubb">
+                <HeaderStyle HorizontalAlign="Center" />
+                <ItemStyle HorizontalAlign="Left" Width="200px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="name" HeaderText="Tävling">
-                <ItemStyle Width="150px" />
+                <HeaderStyle HorizontalAlign="Center" />
+                <ItemStyle Width="200px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="place" HeaderText="Plats">
-                <ItemStyle Width="150px" />
+                <HeaderStyle HorizontalAlign="Center" />
+                <ItemStyle Width="200px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="tatamis" HeaderText="Mattor">
-                <ItemStyle Width="50px" />
+                <HeaderStyle HorizontalAlign="Center" />
+                <ItemStyle Width="50px" HorizontalAlign="Right" />
                 </asp:BoundField>
                 <asp:BoundField DataField="date" DataFormatString="{0:d}" HeaderText="Datum">
+                <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle Width="100px" />
                 </asp:BoundField>
+                <asp:BoundField DataField="numcompetitors" HeaderText="Anmälda">
+                <HeaderStyle HorizontalAlign="Center" Width="50px" />
+                <ItemStyle HorizontalAlign="Right" Width="50px" />
+                </asp:BoundField>
                 <asp:TemplateField HeaderText="Max tävlande">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server"></asp:Label>
+                        <asp:Label ID="lblNumComp" runat="server"></asp:Label>
                     </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Right" Width="50px" />
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:HyperLink ID="HyperLink1" runat="server" Text="Välj"></asp:HyperLink>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <asp:HyperLink class="btn btn-primary" ID="HyperLink1" runat="server" NavigateUrl="~/" Text="Välj"></asp:HyperLink>
+                        </div>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -49,5 +62,4 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-    </p>
-</asp:Content>
+    </asp:Content>

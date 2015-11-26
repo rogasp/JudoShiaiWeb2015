@@ -35,7 +35,37 @@ namespace JudoShiaiWeb.Competition
                 {
                     //DataRowView drv = (DataRowView)e.Row.DataItem;
                     string id = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "id"));
+                    int cstatus = Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "competitionStatus"));
                     hl.NavigateUrl = "~/ShowJudokas/" + id.ToString();
+
+                    switch(cstatus)
+                    {
+                        case 0: //Competition open and not full
+                            hl.CssClass = "btn btn-success active";
+                            break;
+
+                        case 1: //Competition is blocked, not possible to open
+                            hl.CssClass = "btn btn-danger disabled";
+                            break;
+
+                        case 2: //Competition is full but possible to open
+                            hl.CssClass = "btn btn-warning active";
+                            break;
+                    }
+                }
+
+                Label lblnc = (Label)e.Row.FindControl("lblnumComp");
+                if (lblnc != null)
+                {
+                    //DataRowView drv = (DataRowView)e.Row.DataItem;
+                    int nc = Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "maxcompetitors"));
+                    string tnc = "Ingen begränsning";
+
+                    if (nc!=0)
+                    {
+                        tnc = nc.ToString();
+                    }
+                    lblnc.Text=tnc;
                 }
             }
         }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddJudoka2.aspx.cs" Inherits="JudoShiaiWeb.Competition.AddJudoka2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row col-sm-12">
-        <h2 class="text-center bg-warning">Lägg till Judoka</h2>
+        <h2 class="text-left bg-warning">Lägg till Judoka</h2>
     </div>
     <div class="row">
         <div class="form-group col-sm-3">
