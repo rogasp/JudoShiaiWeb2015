@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
     <p>
-        <asp:LinkButton ID="LinkButton1" runat="server">Skapa ny Judoka</asp:LinkButton>
-    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Competition/List">Tillbaka</asp:LinkButton>
+        <div class="btn-group btn-group-xs" role="group" aria-label="..."><asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server">Skapa ny Judoka</asp:LinkButton>
+    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Competition/List" class="btn btn-primary">Tillbaka</asp:LinkButton></div>
     </p>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <asp:TextBox ID="TextBox1" runat="server" Width="300px" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" Width="300px" OnTextChanged="TextBox1_TextChanged" placeholder="Sök sträng..." class="form-control"></asp:TextBox>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowDataBound="GridView1_RowDataBound" Width="688px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
@@ -16,9 +16,13 @@
                 <asp:BoundField DataField="last" HeaderText="Efternamn" />
                 <asp:BoundField DataField="name" HeaderText="Förnamn" />
                 <asp:BoundField DataField="birthyear" HeaderText="Född" />
+                <asp:BoundField DataField="beltName" HeaderText="Bälte" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/" Text="Välj"></asp:HyperLink>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <asp:HyperLink class="btn btn-primary" ID="HyperLink1" runat="server" NavigateUrl="~/" Text="Välj"></asp:HyperLink>
+                            <asp:HyperLink class="btn btn-primary" ID="HyperLink2" runat="server" NavigateUrl="~/" Text="Redigera"></asp:HyperLink>
+                        </div>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

@@ -71,6 +71,7 @@ warning 6002: The table/view 'judoshiai.dbo.vwAddJudokas' does not have a primar
           <Property Name="last" Type="varchar" MaxLength="50" />
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="birthyear" Type="int" />
+          <Property Name="beltName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'judoshiai.dbo.vwListCompetitions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -129,7 +130,8 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
     [vwAddJudokas].[clubbName] AS [clubbName], 
     [vwAddJudokas].[last] AS [last], 
     [vwAddJudokas].[name] AS [name], 
-    [vwAddJudokas].[birthyear] AS [birthyear]
+    [vwAddJudokas].[birthyear] AS [birthyear], 
+    [vwAddJudokas].[beltName] AS [beltName]
     FROM [dbo].[vwAddJudokas] AS [vwAddJudokas]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwListCompetitions" EntityType="Self.vwListCompetitions" store:Type="Views" store:Schema="dbo">
@@ -247,6 +249,7 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
           <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="birthyear" Type="Int32" />
+          <Property Name="beltName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="belt">
           <Key>
@@ -346,6 +349,7 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
           <EntitySetMapping Name="vwAddJudokas">
             <EntityTypeMapping TypeName="judoshiaiModel.vwAddJudoka">
               <MappingFragment StoreEntitySet="vwAddJudokas">
+                <ScalarProperty Name="beltName" ColumnName="beltName" />
                 <ScalarProperty Name="birthyear" ColumnName="birthyear" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="last" ColumnName="last" />

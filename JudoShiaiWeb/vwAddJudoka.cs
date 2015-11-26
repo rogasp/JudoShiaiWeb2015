@@ -20,5 +20,6 @@ namespace JudoShiaiWeb
         public string last { get; set; }
         public string name { get; set; }
         public Nullable<int> birthyear { get; set; }
+        public string beltName { get; set; }
     }
 }
