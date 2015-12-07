@@ -26,9 +26,11 @@
         <div class="row">
             <div class="form-group col-sm-3">
                 <asp:TextBox ID="txtLast" class="form-control" runat="server" AutoCompleteType="Disabled"></asp:TextBox>   
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLast" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Måste ange efternamn</asp:RequiredFieldValidator>
             </div>
             <div class="form-group col-sm-3">
                 <asp:TextBox ID="txtName" class="form-control" runat="server" AutoCompleteType="Disabled"></asp:TextBox> 
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Måste ange förnamn</asp:RequiredFieldValidator>
             </div>
         </div>  
         <div class="row">
@@ -48,6 +50,7 @@
             </div>
             <div class="form-group col-sm-3">
                 <asp:TextBox ID="txtBirthYear" class="form-control" runat="server" AutoCompleteType="Disabled"></asp:TextBox>  
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBirthYear" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Måste ange födelseår</asp:RequiredFieldValidator>
             </div>
         </div>  
         <div class="row">
@@ -72,7 +75,7 @@
                     <asp:Button class="btn btn-primary col-sm-12" ID="Button1" runat="server" Text="Spara" OnClick="Button1_Click" />
                 </div>
                 <div class="col-sm-6">
-                    <asp:Button class="btn btn-default col-sm-12" ID="Button2" runat="server" Text="Avbryt" OnClick="Button2_Click" />
+                    <asp:Button class="btn btn-default col-sm-12" ID="Button2" runat="server" Text="Avbryt" OnClick="Button2_Click" CausesValidation="False" />
                 </div>
             </div>
         </div>

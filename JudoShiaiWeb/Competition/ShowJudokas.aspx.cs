@@ -21,6 +21,7 @@ namespace JudoShiaiWeb.Competition
             if (!IsPostBack)
             {
                 LinkButton1.PostBackUrl = "~/AddJudoka/"+id.ToString();
+                LinkButton3.PostBackUrl = "";
 
                 var competition = (from c in dbContext.competitions
                                   where c.id == id

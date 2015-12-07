@@ -3,7 +3,7 @@
     <h2><%: Title %><asp:Label ID="lblAntal" runat="server" Text=""></asp:Label></h2>
     <p>
         <div class="btn-group btn-group-xs" role="group" aria-label="..."><asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server">Välj tävlande</asp:LinkButton>
-    &nbsp;<asp:LinkButton class="btn btn-primary" ID="LinkButton2" runat="server" PostBackUrl="~/Competition/List">Tillbaka</asp:LinkButton></div>
+    <asp:LinkButton class="btn btn-primary" ID="LinkButton2" runat="server" PostBackUrl="~/Competition/List">Tillbaka</asp:LinkButton><asp:LinkButton class="btn btn-primary" ID="LinkButton3" runat="server">Export JudoShiai</asp:LinkButton></div>
     </p>
     <p>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="729px" OnRowDataBound="GridView1_RowDataBound">
