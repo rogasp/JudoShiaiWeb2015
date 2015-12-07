@@ -33,5 +33,6 @@ namespace JudoShiaiWeb
         public virtual DbSet<vwAddJudoka> vwAddJudokas { get; set; }
         public virtual DbSet<belt> belts { get; set; }
         public virtual DbSet<vwListCompetition> vwListCompetitions { get; set; }
+        public virtual DbSet<vwExportJ> vwExportJS { get; set; }
     }
 }

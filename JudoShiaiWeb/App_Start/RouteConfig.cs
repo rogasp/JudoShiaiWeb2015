@@ -19,6 +19,7 @@ namespace JudoShiaiWeb
             routes.MapPageRoute("RemoveJudoka", "RemoveJudoka/{CompetitionId}/{JudokaId}/{LinkId}", "~/Competition/RemoveJudoka.aspx");
             routes.MapPageRoute("WeighJudoka", "WeighJudoka/{CompetitionId}/{JudokaId}/{LinkId}", "~/Competition/WeighJudoka.aspx");
             routes.MapPageRoute("NewJudoka", "NewJudoka/{CompetitionId}", "~/Competition/NewJudoka.aspx");
+            routes.MapPageRoute("ExportJS", "ExportJS/{CompetitionId}", "~/Competition/ExportJS.aspx");
             //routes.MapPageRoute("ChangebeltJudoka", "ChangebeltJudoka/{CompetitionId}/{JudokaId}/{BeltId}", "~/Competition/ChangebeltJudoka.aspx");
 
         }

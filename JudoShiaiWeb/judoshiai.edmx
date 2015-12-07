@@ -77,6 +77,20 @@ warning 6002: The table/view 'judoshiai.dbo.vwAddJudokas' does not have a primar
           <Property Name="sex" Type="nchar" MaxLength="1" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'judoshiai.dbo.vwExportJS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwExportJS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="competitionId" Type="int" />
+          <Property Name="last" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="birthyear" Type="int" />
+          <Property Name="beltId" Type="int" />
+          <Property Name="weight" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'judoshiai.dbo.vwListCompetitions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwListCompetitions">
           <Key>
@@ -138,6 +152,17 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
     [vwAddJudokas].[pnr] AS [pnr], 
     [vwAddJudokas].[sex] AS [sex]
     FROM [dbo].[vwAddJudokas] AS [vwAddJudokas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwExportJS" EntityType="Self.vwExportJS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwExportJS].[id] AS [id], 
+    [vwExportJS].[competitionId] AS [competitionId], 
+    [vwExportJS].[last] AS [last], 
+    [vwExportJS].[name] AS [name], 
+    [vwExportJS].[birthyear] AS [birthyear], 
+    [vwExportJS].[beltId] AS [beltId], 
+    [vwExportJS].[weight] AS [weight]
+    FROM [dbo].[vwExportJS] AS [vwExportJS]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwListCompetitions" EntityType="Self.vwListCompetitions" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -216,6 +241,7 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
           <EntitySet Name="vwAddJudokas" EntityType="judoshiaiModel.vwAddJudoka" />
           <EntitySet Name="belts" EntityType="judoshiaiModel.belt" />
           <EntitySet Name="vwListCompetitions" EntityType="judoshiaiModel.vwListCompetition" />
+          <EntitySet Name="vwExportJS" EntityType="judoshiaiModel.vwExportJ" />
         </EntityContainer>
         <EntityType Name="competitionJudoka">
           <Key>
@@ -280,6 +306,18 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
           <Property Name="numcompetitors" Type="Int32" />
           <Property Name="clubbName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="competitionStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwExportJ">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="competitionId" Type="Int32" />
+          <Property Name="last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="birthyear" Type="Int32" />
+          <Property Name="beltId" Type="Int32" />
+          <Property Name="weight" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -390,6 +428,19 @@ warning 6002: The table/view 'judoshiai.dbo.vwShowJudokas' does not have a prima
                 <ScalarProperty Name="tatamis" ColumnName="tatamis" />
                 <ScalarProperty Name="place" ColumnName="place" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExportJS">
+            <EntityTypeMapping TypeName="judoshiaiModel.vwExportJ">
+              <MappingFragment StoreEntitySet="vwExportJS">
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="beltId" ColumnName="beltId" />
+                <ScalarProperty Name="birthyear" ColumnName="birthyear" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="competitionId" ColumnName="competitionId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

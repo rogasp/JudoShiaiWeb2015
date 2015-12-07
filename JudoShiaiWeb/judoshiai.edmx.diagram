@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="38ca142af7534fc2b6eda670ed037f52" Name="Diagram1">
+      <Diagram DiagramId="38ca142af7534fc2b6eda670ed037f52" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="judoshiaiModel.clubb" Width="1.5" PointX="5.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="judoshiaiModel.competition" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="judoshiaiModel.judoka" Width="1.5" PointX="8.125" PointY="0.75" IsExpanded="true" />
@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="judoshiaiModel.vwAddJudoka" Width="1.5" PointX="2.625" PointY="3.75" />
         <EntityTypeShape EntityType="judoshiaiModel.belt" Width="1.5" PointX="0.5" PointY="3.625" />
         <EntityTypeShape EntityType="judoshiaiModel.vwListCompetition" Width="1.5" PointX="8.375" PointY="4" />
+        <EntityTypeShape EntityType="judoshiaiModel.vwExportJ" Width="1.5" PointX="9.875" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
