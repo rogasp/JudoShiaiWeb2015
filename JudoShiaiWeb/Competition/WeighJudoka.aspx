@@ -30,6 +30,12 @@
                 </div>
             </div>
             <div class="row">
+        <div class="form-group col-sm-3">
+            <label for="ddlBelts">Bälte:</label>
+            <asp:DropDownList ID="ddlBelts" runat="server" class="form-control" DataTextField="name" DataValueField="id"></asp:DropDownList>
+        </div>
+    </div>
+            <div class="row">
                 <div class="col-md-2 text-right">Vikt: </div>
                 <div class="col-md-10">
                     <asp:TextBox ID="txtWeight" runat="server" CssClass="form-control input-sm"></asp:TextBox>

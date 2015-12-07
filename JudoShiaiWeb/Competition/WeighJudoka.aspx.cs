@@ -38,10 +38,17 @@ namespace JudoShiaiWeb.Competition
                                          where c.id == lid
                                          select c).Single();
 
+                var belts = from b in dbContext.belts
+                            select b;
+                ddlBelts.DataSource = belts.ToList();
+                ddlBelts.DataBind();
+                ddlBelts.Focus();
+
                 lblClub.Text = clubb.name;
                 lblCompetition.Text = competition.name;
                 lblJudoka.Text = judoka.last + ", " + judoka.name;
                 txtWeight.Text = (Convert.ToDecimal(competitionJudoka.weight) / 100).ToString("F");
+                ddlBelts.SelectedIndex = (int)competitionJudoka.beltId - 1;
                 txtWeight.Focus();
 
             }
@@ -57,10 +64,24 @@ namespace JudoShiaiWeb.Competition
                                       where c.id == lid
                                       select c).Single();
 
+            var judoka = (from j in dbContext.judokas
+                          where j.id == competitionJudoka.judokaId
+                          select j).Single();
+
             int weight = Convert.ToInt16(Convert.ToDecimal(txtWeight.Text)*100);
+            int beltId = Convert.ToInt16(ddlBelts.SelectedValue);
+
             competitionJudoka.weight = weight;
+            competitionJudoka.beltId = beltId;
             
             dbContext.SaveChanges();
+
+            if (beltId != judoka.beltid)
+            {
+                judoka.beltid = beltId;
+                dbContext.SaveChanges();
+                //Response.Redirect("~/ChangebeltJudoka/" + cid.ToString() + "/" + jid.ToString() + "/" + beltId.ToString());
+            }
 
             Response.Redirect("~/ShowJudokas/" + cid.ToString());
         }
