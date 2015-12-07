@@ -21,5 +21,7 @@ namespace JudoShiaiWeb
         public string name { get; set; }
         public Nullable<int> birthyear { get; set; }
         public string beltName { get; set; }
+        public string pnr { get; set; }
+        public string sex { get; set; }
     }
 }

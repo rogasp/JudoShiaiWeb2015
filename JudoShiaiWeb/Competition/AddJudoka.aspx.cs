@@ -18,7 +18,7 @@ namespace JudoShiaiWeb.Competition
 
             if (!IsPostBack)
             {
-                LinkButton1.PostBackUrl = "~/AddJudoka/" + id.ToString();
+                LinkButton1.PostBackUrl = "~/NewJudoka/" + id.ToString();
                 LinkButton2.PostBackUrl = "~/ShowJudokas/" + id.ToString();
 
                 var judokas = from j in dbContext.vwAddJudokas
@@ -55,12 +55,19 @@ namespace JudoShiaiWeb.Competition
             var judokas = from j in dbContext.vwAddJudokas
                           where (j.name.Contains(text)||
                                 j.last.Contains(text)||
-                                j.birthyear.ToString().Contains(text))&&
+                                j.pnr.Contains(text)||
+                                j.birthyear.ToString().Contains(text)||
+                                j.clubbName.Contains(text))&&
                                 !dbContext.competitionJudokas.Any(cj => j.id == cj.judokaId && cj.competitionId == id)
                           select j;
             GridView1.DataSource = judokas.ToList();
             GridView1.DataBind();
             TextBox1.Focus();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

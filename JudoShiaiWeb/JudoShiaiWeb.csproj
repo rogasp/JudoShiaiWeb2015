@@ -206,8 +206,10 @@
     <Content Include="Competition\AddJudoka.aspx" />
     <Content Include="Competition\AddJudoka2.aspx" />
     <Content Include="Competition\List.aspx" />
+    <Content Include="Competition\NewJudoka.aspx" />
     <Content Include="Competition\RemoveJudoka.aspx" />
     <Content Include="Competition\ShowJudokas.aspx" />
+    <Content Include="Competition\Webcontrols\Judoka.ascx" />
     <Content Include="Competition\WeighJudoka.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -446,6 +448,13 @@
     <Compile Include="Competition\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Competition\NewJudoka.aspx.cs">
+      <DependentUpon>NewJudoka.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competition\NewJudoka.aspx.designer.cs">
+      <DependentUpon>NewJudoka.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Competition\RemoveJudoka.aspx.cs">
       <DependentUpon>RemoveJudoka.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -459,6 +468,13 @@
     </Compile>
     <Compile Include="Competition\ShowJudokas.aspx.designer.cs">
       <DependentUpon>ShowJudokas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competition\Webcontrols\Judoka.ascx.cs">
+      <DependentUpon>Judoka.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competition\Webcontrols\Judoka.ascx.designer.cs">
+      <DependentUpon>Judoka.ascx</DependentUpon>
     </Compile>
     <Compile Include="Competition\WeighJudoka.aspx.cs">
       <DependentUpon>WeighJudoka.aspx</DependentUpon>

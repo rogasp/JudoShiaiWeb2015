@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
     <p>
-        <div class="btn-group btn-group-xs" role="group" aria-label="..."><asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server">Skapa ny Judoka</asp:LinkButton>
+        <div class="btn-group btn-group-xs" role="group" aria-label="..."><asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Skapa ny Judoka</asp:LinkButton>
     &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Competition/List" class="btn btn-primary">Tillbaka</asp:LinkButton></div>
     </p>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">

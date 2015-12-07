@@ -22,5 +22,6 @@ namespace JudoShiaiWeb
         public string idrottsid { get; set; }
         public string pnr { get; set; }
         public Nullable<int> birthyear { get; set; }
+        public string sex { get; set; }
     }
 }
